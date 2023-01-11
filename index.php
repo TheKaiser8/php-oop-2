@@ -1,13 +1,23 @@
 <?php
 require_once __DIR__ . "/classes/Product.php";
 require_once __DIR__ . "/classes/Food.php";
+require_once __DIR__ . "/classes/Toy.php";
+
 
 $food = new Food("Croccantini", "https://arcaplanet.vtexassets.com/arquivos/ids/270782/Monge-All-Breeds-Adult-Agnello-Riso-e-Patate-2.5Kg.jpg?v=1759851389", 16.99);
 $food->setFlavour("Pollo");
 $food->setExpiration("11/01/2024");
 
+$toy = new Toy("Gioco Cane Frisbee", "https://arcaplanet.vtexassets.com/arquivos/ids/277247/AD043-F.jfif.jpg?v=1758323126", 10.49);
+$toy->setBrand("Camon");
+$toy->setMaterial("Plastica");
 
-var_dump($food);
+$products = [
+    $food,
+    $toy
+];
+
+var_dump($products);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,16 +36,21 @@ var_dump($food);
     <div class="container">
         <h1 class="text-center">Pet store</h1>
         <div class="row">
-            <div class="col-3">
-                <div class="card">
-                    <img src="<?php echo $food->getImage(); ?>" class="card-img-top" alt="<?php echo $food->getName(); ?>">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $food->getName(); ?></h5>
-                        <p class="card-text">Prezzo: <?php echo $food->getPrice(); ?>€</p>
-                        <a href="#" class="btn btn-primary">Acquista</a>
+            <?php foreach ($products as $product) { ?>
+                <div class="col-3">
+                    <div class="card">
+                        <img src="<?php echo $product->getImage(); ?>" class="card-img-top" alt="<?php echo $product->getName(); ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $product->getName(); ?></h5>
+                            <p class="card-text">Prezzo: <?php echo $product->getPrice(); ?>€</p>
+                            <?php if (method_exists($product, 'getExpiration')) { ?>
+                                <p class="card-text">Scadenza: <?php echo $product->getExpiration(); ?></p>
+                            <?php } ?>
+                            <a href="#" class="btn btn-primary">Acquista</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 
