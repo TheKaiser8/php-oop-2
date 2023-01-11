@@ -1,20 +1,13 @@
 <?php
 require_once __DIR__ . "/Product.php";
+require_once __DIR__ . "/traits/MaterialItem.php";
+require_once __DIR__ . "/traits/BrandItem.php";
 
 class Kennel extends Product
 {
-    private $brand;
-    private $shape;
-    private $material;
+    use MaterialItem, BrandItem;
 
-    public function setBrand($brand)
-    {
-        $this->brand = $brand;
-    }
-    public function getBrand()
-    {
-        return $this->brand;
-    }
+    private $shape;
 
     public function setShape($shape)
     {
@@ -23,14 +16,5 @@ class Kennel extends Product
     public function getShape()
     {
         return $this->shape;
-    }
-
-    public function setMaterial($material)
-    {
-        $this->material = $material;
-    }
-    public function getMaterial()
-    {
-        return $this->material;
     }
 }
