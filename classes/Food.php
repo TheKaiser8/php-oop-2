@@ -17,6 +17,9 @@ class Food extends Product
 
     public function setExpiration($date)
     {
+        if (!DateTime::createFromFormat("d/m/Y", $date)) {
+            throw new Exception("Il formato della data non è valido");
+        }
         $this->expiration = $date;
     }
     public function getExpiration()
