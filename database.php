@@ -26,6 +26,7 @@ $toy->setBrand("Trixie");
 $kennel = new Kennel("Cuccia Lux", "https://arcaplanet.vtexassets.com/arquivos/ids/272213/mondial-pet-canile.jpg?v=1757378496", 139.99, $dog);
 $kennel->setBrand("Mondial Pet");
 $kennel->setShape("Rettangolare");
+$kennel->setMaterial("Legno coibentato");
 
 $products = [
     $food,
