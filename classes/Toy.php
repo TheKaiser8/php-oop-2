@@ -12,7 +12,7 @@ class Toy extends Product
     }
     public function getBrand()
     {
-        $this->brand;
+        return $this->brand;
     }
 
     public function setMaterial($material)
